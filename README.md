@@ -1,4 +1,3 @@
-
 # Willkommen zum ReadMe der LaTeX-Vorlage für wissenschaftliche Arbeiten.
 *Version 1.3 vom 26.05.2019*
 

@@ -1,0 +1,95 @@
+% !TEX encoding = UTF-8 Unicode
+% !TEX root =  Bachelorarbeit.tex
+
+% Zeilenabstand 1,5 Zeilen ---------------------------------------------------------------------
+%\onehalfspacing{}
+
+% Seitenränder ------------------------------------------------------------------------------------
+\setlength{\topskip}{\ht\strutbox} % behebt Warnung von geometry
+\geometry{paper=a4paper,left=20mm,right=20mm,top=20mm}
+
+
+% Kopf- und Fußzeilen --------------------------------------------------------------------------
+\pagestyle{scrheadings}
+
+% Kopf- und Fußzeile auch auf Kapitelanfangsseiten
+\renewcommand*{\chapterpagestyle}{scrheadings} 
+
+% Schriftform der Kopfzeile
+\renewcommand{\headfont}{\normalfont}
+
+% Abstand vor und hinter Überschriften verringern
+\RedeclareSectionCommand[
+  afterindent=false,
+  beforeskip=0pt,
+  afterskip=2\baselineskip]{chapter}
+\RedeclareSectionCommand[
+  afterindent=false,
+  beforeskip=\baselineskip,
+  afterskip=.5\baselineskip]{section}
+\RedeclareSectionCommand[
+  afterindent=false,
+  beforeskip=.75\baselineskip,
+  afterskip=.5\baselineskip]{subsection}
+\RedeclareSectionCommand[
+  afterindent=false,
+  beforeskip=.5\baselineskip,
+  afterskip=.25\baselineskip]{subsubsection}
+\RedeclareSectionCommand[
+  runin=true,
+  beforeskip=.5\baselineskip,
+  afterskip=1em]{paragraph}
+\RedeclareSectionCommand[
+  runin=true,
+  beforeskip=.5\baselineskip,
+  afterskip=1em]{subparagraph} 
+
+% Kopfzeile für einseitiges Dokument:
+\ihead{%\small{\textsc{\titel}	\\
+	%\untertitel
+	%\\[2ex]
+	\textit{\headmark}%}
+}
+\chead{}
+\ohead{\includegraphics[scale=0.06]{\logo} \includegraphics[scale=0.06]{\uplogo}}
+\setlength{\headheight}{21mm} % Höhe der Kopfzeile
+% Kopfzeile über den Text hinaus verbreitern
+
+
+%% Kopfzeile für Zweiseitiges Dokument:
+%\ihead{\textit{\leftmark}}
+%\chead{}
+%\ohead{}
+%\lehead{\includegraphics[scale=0.25]{\logo}}
+%\rohead{\includegraphics[scale=0.25]{\logo}}
+%\setheadsepline[text]{0.4pt} % Trennlinie unter Kopfzeile
+
+
+% Fußzeile
+%\ifoot{\copyright\ \autor}
+\cfoot{}
+\ofoot{\pagemark \\[4ex]}
+\setlength{\footheight}{15mm} % Höhe der Fußzeile
+
+
+% sonstige typographische Einstellungen ---------------------------------------------------
+% erzeugt ein wenig mehr Platz hinter einem Punkt
+\frenchspacing{}
+
+% Schusterjungen und Hurenkinder vermeiden
+\clubpenalty = 10000
+\widowpenalty = 10000 
+\displaywidowpenalty = 10000
+
+% Quellcode-Ausgabe formatieren
+\lstset{numbers=left, numberstyle=\tiny, numbersep=5pt, breaklines=true}
+\lstset{emph={square}, emphstyle=\color{red}, emph={[2]root,base}, emphstyle={[2]\color{blue}}}
+
+% Fußnoten, Figures und Tabllen fortlaufend durchnummerieren
+\counterwithout{footnote}{chapter}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+% Eine horizontale Linie über den Captions erzeugen, "Figure" wird bold und ohne ":" vor der eigentlichen caption
+\DeclareCaptionFormat{captionformat}{\hrulefill\\#1#2#3}
+\captionsetup[figure]{labelfont=bf, labelsep=space, format=captionformat} 

@@ -57,10 +57,10 @@
 
 
 % Beschriftung von Tabellen und Bildern ändern ----------------------------------------------------------
-\addto\captionsngerman{
-	\renewcommand{\figurename}{Abb.}
-	\renewcommand{\tablename}{Tab.}
-}
+% \addto\captionsngerman{
+%	\renewcommand{\figurename}{Abb.}
+%	\renewcommand{\tablename}{Tab.}
+%}
 
 
 % Spaltendefinition rechtsbündig mit definierter Breite -------------------------------------------------
@@ -68,4 +68,19 @@
 
 
 % Linksbündige Tabellenspalten mit tabularx -------------------------------------------------------------
-\newcolumntype{y}[1]{>{\RaggedRight\arraybackslash\hsize=#1\hsize}X}
+% \newcolumntype{y}[1]{>{\RaggedRight\arraybackslash\hsize=#1\hsize}X}
+
+% Einige Hilfsmethoden zum Zeichnen
+\newcommand{\tstar}[5]{% inner radius, outer radius, tips, rot angle, options
+	\pgfmathsetmacro{\starangle}{360/#3}
+	\draw[#5] (#4:#1)
+	\foreach \x in {1,...,#3}
+	{ -- (#4+\x*\starangle-\starangle/2:#2) -- (#4+\x*\starangle:#1) }
+	-- cycle;
+}
+
+\newcommand{\ngram}[4]{% outer radius, tips, rot angle, options
+	\pgfmathsetmacro{\starangle}{360/#2}
+	\pgfmathsetmacro{\innerradius}{#1*sin(90-\starangle)/sin(90+\starangle/2)}
+	\tstar{\innerradius}{#1}{#2}{#3}{#4}
+}

@@ -44,16 +44,21 @@
   beforeskip=.5\baselineskip,
   afterskip=1em]{subparagraph} 
 
+
+% Kopfzeile über den Text hinaus verbreitern
+\setlength{\headheight}{21mm} % Höhe der Kopfzeile
+
 % Kopfzeile für einseitiges Dokument:
-\ihead{%\small{\textsc{\titel}	\\
-	%\untertitel
-	%\\[2ex]
-	\textit{\headmark}%}
+\ihead{%\small{\textsc{\titel}  \\
+  %\untertitel
+  %\\[2ex]
+  \textit{\headmark}%}
 }
 \chead{}
+% Für Kopfzeilen mit nur einem Logo
+% \ohead{\includegraphics[scale=0.06]{\logo}}
+% Für Kopfzeilen mit zwei Logos
 \ohead{\includegraphics[scale=0.06]{\logo} \includegraphics[scale=0.06]{\logozwei}}
-\setlength{\headheight}{21mm} % Höhe der Kopfzeile
-% Kopfzeile über den Text hinaus verbreitern
 
 
 %% Kopfzeile für Zweiseitiges Dokument:
@@ -63,7 +68,6 @@
 %\lehead{\includegraphics[scale=0.25]{\logo}}
 %\rohead{\includegraphics[scale=0.25]{\logo}}
 %\setheadsepline[text]{0.4pt} % Trennlinie unter Kopfzeile
-
 
 % Fußzeile
 %\ifoot{\copyright\ \autor}
@@ -93,3 +97,7 @@
 % Eine horizontale Linie über den Captions erzeugen, "Figure" wird bold und ohne ":" vor der eigentlichen caption
 \DeclareCaptionFormat{captionformat}{\hrulefill\\#1#2#3}
 \captionsetup[figure]{labelfont=bf, labelsep=space, format=captionformat} 
+\captionsetup[table]{labelfont=bf, labelsep=space, format=captionformat} 
+
+% Vermeiden, dass Fußnoten auf mehrere Seiten verteilt werden
+\interfootnotelinepenalty = 9999
